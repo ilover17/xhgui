@@ -89,13 +89,26 @@ class Xhgui_Twig_Extension extends Twig_Extension
     }
 
     public function formatBytes($value)
-    {
-        return number_format((float)$value) . '&nbsp;<span class="units">bytes</span>';
+    {   
+        // $value = number_format((float)$value);
+        $val = round($value/1024,1);
+        if($val==0)
+        {
+            $val = round($value/1024);
+        }
+        if( $val > 1024){
+            $val = round($val/1024,4);
+            return  $val. '&nbsp;<span class="units">M</span>';    
+        }else{
+            return  $val. '&nbsp;<span class="units">KB</span>';    
+        }
+        
     }
+
 
     public function formatTime($value)
     {
-        return number_format((float)$value) . '&nbsp;<span class="units">µs</span>';
+        return round((float)$value /1000,4) . '&nbsp;<span class="units">ms</span>';
     }
 
     public function formatDiff($value)
