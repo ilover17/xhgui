@@ -40,7 +40,7 @@ auto_prepend_file=/你的XHGUI路径/xhgui/external/header.php
    } 
 } 
 ## mongo 配置
-
+[code]
 docker exec -it mongo bash
 mongo 
 > use xhprof 
@@ -49,3 +49,4 @@ mongo
 > db.results.ensureIndex( { 'profile.main().mu' : -1 } ) 
 > db.results.ensureIndex( { 'profile.main().cpu' : -1 } ) 
 > db.results.ensureIndex( { 'meta.url' : 1 } ) 
+[/code]
