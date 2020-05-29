@@ -1,0 +1,35 @@
+{% extends 'layout/base.twig' %}
+
+{% block title %}
+    - 删除一个记录
+{% endblock %}
+
+{% block content %}
+<h1>Delete a run</h1>
+
+<form class="form-stacked" action="{{ url('run.delete.submit') }}" method="post">
+    <p>你确定删除 <a href="{{ url('run.view', {'id': result.id|trim }) }}">记录 {{ result.id }}</a>?</p>
+    <table class="table table-hover">
+        <tr>
+            <th class="span2">方法</th>
+            <td>{{result.meta('SERVER.REQUEST_METHOD')}}</td>
+        </tr>
+        <tr>
+            <th class="span2">地址</th>
+            <td>
+                {% set addr = result.meta('SERVER.SERVER_NAME') ~ result.meta.url %}
+                {{ addr }}
+            </td>
+        </tr>
+        <tr>
+            <th class="span2">Time</th>
+            <td>{{ result.date|date(date_format) }}</td>
+        </tr>
+    </table>
+    <div class="form-actions">
+        <input type="hidden" name="id" value="{{ run_id }}" />
+        <input class="btn btn-large btn-danger" type="submit" value="删除" />
+    </div>
+</form>
+
+{% endblock %}

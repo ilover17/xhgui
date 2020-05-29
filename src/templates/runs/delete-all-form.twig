@@ -1,0 +1,18 @@
+{% extends 'layout/base.twig' %}
+{% import 'macros/helpers.twig' as helpers %}
+
+{% block title %}
+    - 删除所有
+{% endblock %}
+
+{% block content %}
+<h1>Delete all runs</h1>
+
+<form class="form-stacked" action="{{ url('run.deleteAll.submit') }}" method="post">
+    <div class="hero-unit">
+        <p>您确定删除所有记录？</p>
+        <input class="btn btn-large btn-danger" type="submit" value="删除" />
+    </div>
+</form>
+
+{% endblock %}
