@@ -124,7 +124,6 @@ class Xhgui_Controller_Run extends Xhgui_Controller
             'wall_time' => $timeChart,
             'memory' => $memoryChart,
             'watches' => $watchedFunctions,
-            'sql' => $result->getSQL(),
             'date_format' => $this->app->config('date.format'),
         ));
     }
